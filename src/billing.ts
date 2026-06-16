@@ -11,3 +11,4 @@ export function formatPrice(amount: number): string {
 export function applyTax(price: number, rate: number = 0.2): number {
   return price + price * rate;
 }
+// empty
