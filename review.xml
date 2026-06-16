@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr_review_context>
+  <pr number="1" title="feat: Add billing utilities" url="https://github.com/IamIonut31/gsync-test/pull/1" />
+
+  <pr_comments>
+    <comment id="IC_kwDOSqNptc8AAAABGSgrPw" author="IamIonut31" created_at="2026-06-16T09:32:46Z">
+      <body><![CDATA[
+Looks good overall! A few suggestions on the billing logic below. Also, we should add unit tests before merging.
+      ]]></body>
+    </comment>
+    <comment id="IC_kwDOSqNptc8AAAABGSgvVA" author="IamIonut31" created_at="2026-06-16T09:32:54Z">
+      <body><![CDATA[
+Also wondering if we should export these from an index.ts barrel file for cleaner imports?
+      ]]></body>
+    </comment>
+  </pr_comments>
+
+  <review_threads>
+    <review_thread id="PRRT_kwDOSqNptc6J1xVs" file="src/billing.ts" line="3" status="unresolved">
+      <comment id="PRRC_kwDOSqNptc7L0xXb" author="IamIonut31" created_at="2026-06-16T09:34:31Z">
+        <body><![CDATA[
+This calculation seems wrong. Should be: price - (price * discount / 100)
+        ]]></body>
+      </comment>
+      <reply id="PRRC_kwDOSqNptc7L0yFv" author="IamIonut31" created_at="2026-06-16T09:35:00Z">
+        <body><![CDATA[
+Good catch! I will fix this to return the discounted price instead of the discount amount.
+        ]]></body>
+      </reply>
+    </review_thread>
+    <review_thread id="PRRT_kwDOSqNptc6J1xjN" file="src/billing.ts" line="9" status="resolved">
+      <comment id="PRRC_kwDOSqNptc7L0xp-" author="IamIonut31" created_at="2026-06-16T09:34:41Z">
+        <body><![CDATA[
+The variable `dollar` is not defined. Did you mean to use a template literal? Should be: return `$${amount.toFixed(2)}`
+        ]]></body>
+      </comment>
+    </review_thread>
+  </review_threads>
+</pr_review_context>
