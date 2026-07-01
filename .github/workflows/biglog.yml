@@ -1,0 +1,16 @@
+name: biglog
+on:
+  pull_request:
+jobs:
+  big:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Emit a large log then fail
+        run: |
+          for i in $(seq 1 700); do
+            if [ "$i" -eq 50 ]; then echo "ERROR: config file missing at startup"; fi
+            if [ "$i" -eq 350 ]; then echo "FATAL: worker process crashed unexpectedly"; fi
+            echo "processing item $i of 700 ... ok"
+          done
+          echo "done processing, exiting with failure"
+          exit 1
