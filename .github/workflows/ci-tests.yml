@@ -1,0 +1,29 @@
+name: ci-tests
+on:
+  pull_request:
+jobs:
+  test-unit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run unit tests
+        run: |
+          for i in $(seq 1 400); do echo "unit test log line $i ... ok"; done
+          echo "FAIL src/billing.test.ts > applyDiscount"
+          echo "AssertionError: expected 90 but got 10"
+          echo "  at Object.<anonymous> (src/billing.test.ts:12:5)"
+          exit 1
+  test-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run integration tests
+        run: |
+          echo "connecting to database..."
+          echo "Traceback (most recent call last):"
+          echo "  File \"app.py\", line 10, in connect"
+          echo "Exception: connection refused"
+          exit 1
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lint
+        run: echo "lint passed cleanly"

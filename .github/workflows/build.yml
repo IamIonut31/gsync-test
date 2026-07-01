@@ -1,0 +1,9 @@
+name: build
+on:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: echo "build succeeded"

@@ -1,0 +1,14 @@
+name: e2e
+on:
+  pull_request:
+jobs:
+  e2e-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run e2e suite
+        run: |
+          echo "starting e2e suite..."
+          for i in $(seq 1 50); do echo "e2e step $i completed"; done
+          echo "fatal: cannot find selector #login-button"
+          echo "Error: Timed out waiting for element"
+          exit 1
